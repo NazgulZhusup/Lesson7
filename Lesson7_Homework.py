@@ -23,6 +23,10 @@ class Reptile(Animal):
     def make_sound(self):
         print(f"{self.name} says: Ш-ш-ш!")
 
+def make_sound(animals):
+    for animal in animals:
+        animal.make_sound()
+
 class Zookeeper:
     def __init__(self, name):
         self.name = name
