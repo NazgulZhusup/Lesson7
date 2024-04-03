@@ -17,7 +17,7 @@ class Bird(Animal):
 
 class Mammal(Animal):
     def make_sound(self):
-        print(f"{self.name} says: Му-у!")
+        print(f"{self.name} says: Р-Р-Р-Р!")
 
 class Reptile(Animal):
     def make_sound(self):
@@ -31,7 +31,7 @@ class Zookeeper:
     def __init__(self, name):
         self.name = name
 
-    def feed_animals(self, animals):
+    def feed_animal(self, animals):
         for animal in animals:
             print(f"{self.name} feeds {animal.name}.")
 
@@ -39,7 +39,7 @@ class Veterinarian:
     def __init__(self, name):
         self.name = name
 
-    def heal_animals(self, animals):
+    def heal_animal(self, animals):
         for animal in animals:
             print(f"{self.name} is treating {animal.name}.")
 
@@ -86,14 +86,30 @@ class Zoo:
         else:
             return Animal(name, age)
 
+bird1 = Bird("Parrot Bird", "2")
+mammal1 = Mammal("Lion","3")
+reptile1 = Reptile("Snake","3")
+keeper = Zookeeper("John")
+veterinarian = Veterinarian("Michael")
+
+
 # Demonstrating functionality
 zoo = Zoo()
 zoo.add_animal(Bird("Parrot", 2))
 zoo.add_animal(Mammal("Lion", 3))
+zoo.add_animal(Reptile("Snake","3"))
+
+make_sound(zoo.animals)
+
+keeper.feed_animal(zoo.animals)
+veterinarian.heal_animal(zoo.animals)
+
 zoo.add_staff(Zookeeper("Alex"))
 
 # Save to file
 zoo.save_to_file("zoo_data.json")
+
+
 
 # Load from file and demonstrate
 new_zoo = Zoo()
@@ -102,3 +118,5 @@ for animal in new_zoo.animals:
     print(f"Loaded {animal.name} the {animal.__class__.__name__}, aged {animal.age}")
 for staff in new_zoo.staff_list:
     print(f"Loaded staff member {staff.name} the {staff.__class__.__name__}")
+
+
